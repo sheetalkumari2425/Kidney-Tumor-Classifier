@@ -41,6 +41,7 @@ class ClientApp:
 
 
 
+
 if __name__ == "__main__":
     clientApp = ClientApp()
     app.run(host='0.0.0.0', port=8080) #for AWS
