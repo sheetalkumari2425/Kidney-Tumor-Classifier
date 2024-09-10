@@ -1,12 +1,15 @@
 import numpy as np
+import tensorflow
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 import os
 
 
 class PredictionPipeline:
+
     def __init__(self,filename):
         self.filename =filename
+
 
 def predict(self):
         model = load_model(os.path.join("model", "model.h5"))
