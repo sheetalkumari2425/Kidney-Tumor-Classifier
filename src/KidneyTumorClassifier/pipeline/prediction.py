@@ -20,6 +20,8 @@ class PredictionPipeline:
         test_image = image.load_img(imagename, target_size = (224,224))
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis = 0)
+        # Normalize the image if needed (e.g., divide by 255 if that's how it was trained)
+        test_image /= 255.0
         result = np.argmax(model.predict(test_image), axis=1)
         print(result)
 
