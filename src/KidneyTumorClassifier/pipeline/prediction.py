@@ -12,7 +12,10 @@ class PredictionPipeline:
 
 
     def predict(self):
-        model = load_model(os.path.join("model", "model.h5"))
+        # load model
+        # model = load_model(os.path.join("model", "model.h5"))
+        model = load_model(os.path.join("artifacts", "training", "model.h5"))
+
         imagename = self.filename
         test_image = image.load_img(imagename, target_size = (224,224))
         test_image = image.img_to_array(test_image)
@@ -21,8 +24,10 @@ class PredictionPipeline:
         print(result)
 
         if result[0] == 1:
+            print("insdie is, result is: ", result[0])
             prediction = 'Tumor'
             return [{ "image" : prediction}]
         else:
+            print("inside else, result is: ",result[0])
             prediction = 'Normal'
             return [{ "image" : prediction}]
