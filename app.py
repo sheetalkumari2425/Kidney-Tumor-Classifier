@@ -31,7 +31,7 @@ class ClientApp:
         return "Yeah!!! Training completed successfully"
     
 
-    @app.route("/prediction", methods=['POST'])
+    @app.route("/predict", methods=['POST'])
     @cross_origin()
     def predictionRoute():
         image = request.json['image']
