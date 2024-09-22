@@ -5,8 +5,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 7f530d086701144ead02c1fb5b3a8fd8
-      size: 576
+      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: 1f6648dbb7350364a8d608c3ff0bb9a4
@@ -22,8 +22,8 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 7f530d086701144ead02c1fb5b3a8fd8
-      size: 576
+      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_02_prepare_base_model.py
       hash: md5
       md5: 022dbbf88de9234d64dd1396f7df5d4c
@@ -41,7 +41,7 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: c3ccf87a912a1ee9a87b852759ae82b9.dir
+      md5: 173a215f46f3b3b8b2f8b49901e84020.dir
       size: 118054560
       nfiles: 2
   training:
@@ -54,8 +54,8 @@ stages:
       nfiles: 465
     - path: config/config.yaml
       hash: md5
-      md5: 7f530d086701144ead02c1fb5b3a8fd8
-      size: 576
+      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_03_model_training.py
       hash: md5
       md5: 13a8cbd2f9d924ce3f07b7a1821f3d10
@@ -64,7 +64,7 @@ stages:
       params.yaml:
         AUGMENTATION: true
         BATCH_SIZE: 16
-        EPOCHS: 10
+        EPOCHS: 100
         IMAGE_SIZE:
         - 224
         - 224
@@ -72,7 +72,7 @@ stages:
     outs:
     - path: artifacts/training/model.h5
       hash: md5
-      md5: 12ad4bc1211cde8a16f80b9960e37717
+      md5: 885ee1cbda20e79b70bc313f392fc7ac
       size: 59337520
   evaluation:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
@@ -84,21 +84,21 @@ stages:
       nfiles: 465
     - path: artifacts/training/model.h5
       hash: md5
-      md5: 12ad4bc1211cde8a16f80b9960e37717
+      md5: 885ee1cbda20e79b70bc313f392fc7ac
       size: 59337520
     - path: config/config.yaml
       hash: md5
-      md5: 7f530d086701144ead02c1fb5b3a8fd8
-      size: 576
+      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
       hash: md5
-      md5: 7ca31baf40815d24cb18b5feb4ff89f0
-      size: 903
+      md5: ad472248ab22fec1b188ce7d3264c10d
+      size: 938
     params:
       params.yaml:
         AUGMENTATION: true
         BATCH_SIZE: 16
-        EPOCHS: 10
+        EPOCHS: 100
         IMAGE_SIZE:
         - 224
         - 224
@@ -106,5 +106,5 @@ stages:
     outs:
     - path: scores.json
       hash: md5
-      md5: e091aefbe5d5308ee5fb150a2948dc80
-      size: 73
+      md5: 000ec3b027ce458b85298c296c3f42cf
+      size: 61
