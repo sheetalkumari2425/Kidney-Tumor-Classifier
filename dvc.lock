@@ -12,7 +12,7 @@ stages:
       md5: 1f6648dbb7350364a8d608c3ff0bb9a4
       size: 929
     outs:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
+    - path: artifacts/data_ingestion/kidney-ct-scan-image
       hash: md5
       md5: 40f5684c7b5d77fd727650713da47413.dir
       size: 961115981
@@ -47,7 +47,7 @@ stages:
   training:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_03_model_training.py
     deps:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
+    - path: artifacts/data_ingestion/kidney-ct-scan-image
       hash: md5
       md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
       size: 58936381
@@ -77,7 +77,7 @@ stages:
   evaluation:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
     deps:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
+    - path: artifacts/data_ingestion/kidney-ct-scan-image
       hash: md5
       md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
       size: 58936381
