@@ -5,24 +5,24 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      md5: a32acea706af9329778f7d99aede6139
       size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_01_data_ingestion.py
       hash: md5
       md5: 1f6648dbb7350364a8d608c3ff0bb9a4
       size: 929
     outs:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image
+    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
       hash: md5
-      md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
-      size: 58936381
-      nfiles: 465
+      md5: 40f5684c7b5d77fd727650713da47413.dir
+      size: 961115981
+      nfiles: 7360
   prepare_base_model:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_02_prepare_base_model.py
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: ba9bdb517dc886f48bcaa4df3cfd8aba
+      md5: a32acea706af9329778f7d99aede6139
       size: 676
     - path: src/KidneyTumorClassifier/pipeline/stage_02_prepare_base_model.py
       hash: md5
@@ -41,13 +41,13 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 173a215f46f3b3b8b2f8b49901e84020.dir
+      md5: 5963e6bcaac1856b24d52b1cadd9aa22.dir
       size: 118054560
       nfiles: 2
   training:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_03_model_training.py
     deps:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image
+    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
       hash: md5
       md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
       size: 58936381
@@ -77,7 +77,7 @@ stages:
   evaluation:
     cmd: python src/KidneyTumorClassifier/pipeline/stage_04_model_evaluation_with_mlflow.py
     deps:
-    - path: artifacts/data_ingestion/kidney-ct-scan-image
+    - path: artifacts/data_ingestion/kidney-ct-scan-image-current
       hash: md5
       md5: 33ed59dbe5dec8ce2bb8e489b55203e4.dir
       size: 58936381
